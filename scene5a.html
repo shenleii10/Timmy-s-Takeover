@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="style.css" rel="stylesheet">
+        <title> </title>
+    </head>
+
+    <body>
+
+        <div class="dialogue-box">
+            <p id="text" style="color: black;"></p>
+        </div>
+
+        <div class="button-container">
+            <!-- <button class="action-button" onclick="Option6A()" style="margin-top: 200px;">A: </button> -->
+            <!-- <button class="action-button" onclick="Option6B()" style="margin-top: 10px;">B:</button> -->
+            <!-- <button class="action-button" onclick="Option3()">C: Investigate the washroom</button> -->
+        </div>
+        <!-- <img src="4.jpeg" alt="front counter" width="1000" style="margin-top: -120px; margin-left: 20px;"> -->
+        <img src="4.jpeg" alt="front counter" width="1000" style="margin-top: 180px; margin-left: 20px;">
+
+
+<div class="congrats-box">
+    <p>Congratulations!</p> <p> You have survived.</p>
+</div>
+
+<button class="home-button" onclick="goHome()">Play Again</button>
+
+        
+    </body>
+
+    <style>
+        body {
+            margin: 0;
+            background: black;
+        }
+
+        .dialogue-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 30px 20px 0 20px; /* top right bottom left */
+            background-color: #ffffff;
+            color: #000; 
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(224, 111, 111, 0.2);
+            font-size: 20px;
+            border: 3px solid #00bfff;
+        }
+
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 20px;
+            gap: 10px;
+        }
+
+        .action-button {
+            width: 30%;
+
+            background-color: #00bfff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            max-width: 100%;
+        
+        }
+
+
+        .action-button:hover {
+            background-color: #009acd;
+            transform: scale(1.03);
+        }
+
+.congrats-box {
+    position: fixed;
+    top: 220px;
+    right: 50px;
+    width: 300px;
+    background-color: #eaffea;
+    border: 3px solid #00cc66;
+    padding: 20px;
+    font-size: 35px;
+    color: #006633;
+    box-shadow: 0 4px 6px rgba(0, 204, 102, 0.2);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.home-button {
+    position: fixed;
+    top: 270px; /* slightly below the congrats box */
+    right: 20px;
+    background-color: #00cc66;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.home-button:hover {
+    background-color: #00994d;
+    transform: scale(1.03);
+}
+
+    </style>
+
+    <script>
+        const textElement = document.getElementById("text");
+        const message = "You smack an unidentified drink to the ground, hot caffeine puddles across the flour, you sniff and lap it up, then the caffeine hits you. Your brain hits warp speed as you realize you overdossed on caffeine. You sprint out the front door and disappear into the darkness. YOU SURVIVED!!! You experienced your first dose of caffeine and escaped on your own terms.";
+        let index = 0;
+
+        function typeEffect() {
+            if (index < message.length) {
+                textElement.textContent += message.charAt(index);
+                index++;
+                setTimeout(typeEffect, 20);
+            }
+        }
+
+    window.onload = typeEffect;
+
+    function Option5A() {
+        window.location.href = "scene5a.html";
+    }
+
+    function Option5B() {
+        window.location.href = "scene5b.html";
+    }
+
+function goHome() {
+    window.location.href = "index.html";
+}
+
+    </script>
+
+
+</html>

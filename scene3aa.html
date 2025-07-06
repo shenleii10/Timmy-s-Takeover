@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="style.css" rel="stylesheet">
+        <title> </title>
+    </head>
+
+    <body>
+
+        <div class="dialogue-box">
+            <p id="text" style="color: black;"></p>
+        </div>
+
+        <div class="button-container">
+            <button class="action-button" onclick="Option4A()" style="margin-top: 150px;">A: pull the......</button>
+            <button class="action-button" onclick="Option4B()" style="margin-top: 10px;">B: ...... </button>
+            <!-- <button class="action-button" onclick="Option3()">C: Investigate the washroom</button> -->
+        </div>
+
+
+        
+
+        
+    </body>
+
+    <style>
+        body {
+            margin: 0;
+            background: black;
+        }
+
+        .dialogue-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 30px 20px 0 20px; /* top right bottom left */
+            background-color: #ffffff;
+            color: #000; 
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(224, 111, 111, 0.2);
+            font-size: 20px;
+            border: 3px solid #00bfff;
+        }
+
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 20px;
+            gap: 10px;
+        }
+
+        .action-button {
+            width: 30%;
+
+            background-color: #00bfff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            max-width: 100%;
+        
+        }
+
+
+        .action-button:hover {
+            background-color: #009acd;
+            transform: scale(1.03);
+        }
+
+
+    </style>
+
+    <script>
+        const textElement = document.getElementById("text");
+        const message = "What distraction should you do?";
+        let index = 0;
+
+        function typeEffect() {
+            if (index < message.length) {
+                textElement.textContent += message.charAt(index);
+                index++;
+                setTimeout(typeEffect, 20);
+            }
+        }
+
+    window.onload = typeEffect;
+
+    function Option4A() {
+        window.location.href = "scene4aa.html";
+    }
+
+    function Option4B() {
+        window.location.href = "scene4bb.html";
+    }
+
+
+    </script>
+
+
+</html>

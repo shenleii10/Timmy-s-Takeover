@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="style.css" rel="stylesheet">
+        <title> </title>
+    </head>
+
+    <body>
+        <div id="homeScreen">
+            <h1>🌌 Timmy's Takeover</h1>
+            <p>A Choose-Your-Own Adventure Game</p>
+            <button id="button1" onclick="startGame()">Start Adventure</button>
+            <button id="button2" onclick="showInstructions()">Instructions</button>
+            <button id="button3" onclick="showWarning()">Warning</button>
+        </div>
+
+<!-- <canvas id="starfield"></canvas> -->
+
+
+    </body>
+
+
+    <style>
+        body {
+            margin: 0;
+            background: black;
+        }
+
+        #homeScreen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 4em;
+            color: #ffdd55;
+            text-shadow: 0 0 10px #ffaa00, 0 0 20px #ff8800;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            color: #e6dcdc;
+            margin-bottom: 50px;
+            text-shadow: 0 0 5px #a8a8a8;
+            margin-top: 100px;
+            
+        }
+
+        button {
+            text-align: center;
+            background-color: rgba(255, 204, 0, 0.8);
+            border: none;
+            border-radius: 12px;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 1.2em;
+            color: #222;
+            cursor: pointer;
+            box-shadow: 0 0 10px #ffaa00;
+            transition: transform 0.2s, background-color 0.2s;
+            font-style: italic;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        button:hover {
+        transform: scale(1.1);
+        background-color: #ff9900;
+        }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+
+
+
+    </style>
+
+
+<script>
+  // Starfield canvas background
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const stars = [];
+  for (let i = 0; i < 300; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5,
+      d: Math.random() * 0.5 + 0.5
+    });
+  }
+
+  function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'white';
+    ctx.shadowBlur = 5;
+    ctx.shadowColor = 'white';
+    for (let star of stars) {
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function moveStars() {
+    for (let star of stars) {
+      star.y += star.d;
+      if (star.y > canvas.height) {
+        star.y = 0;
+        star.x = Math.random() * canvas.width;
+      }
+    }
+  }
+
+  function animate() {
+    drawStars();
+    moveStars();
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // Resize canvas on window change
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+ 
+    
+    function startGame() {
+        window.location.href = "scene1.html";
+    }
+
+
+
+    function showInstructions() {
+        const width = 600;
+        const height = 500;
+
+        const left = (screen.width / 2) - (width / 2);
+        const top = (screen.height / 2) - (height / 2);
+
+        const features = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`;
+
+        window.open("instructions.html", "_blank", features);
+    }
+
+    function showWarning() {
+              const width = 600;
+        const height = 500;
+
+        const left = (screen.width / 2) - (width / 2);
+        const top = (screen.height / 2) - (height / 2);
+
+        const features = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`;
+
+        window.open("warning.html", "_blank", features);
+
+    }
+
+
+</script>
+</html>
